@@ -10,12 +10,12 @@ class Person(val panels: MutableList<Panel>) {
 
 }
 
-class Action(val id: Int, private val panels: MutableList<Panel>) {
-    fun say(text: String, bubble: String = "0") {
+class Action(val id: Int, private val panels: MutableList<Panel>, private val defaultTextSpeed: String?) {
+    fun say(text: String, bubble: String = "0") = apply {
         panels.add(
             Panel(
                 Id = panels.size + 1,
-                Text = text,
+                Text = (defaultTextSpeed ?: "") + text,
                 PoseId = id,
                 BubbleType = bubble
             )
@@ -32,7 +32,7 @@ fun color(text: String, color: Color): String {
     return "[#/c${"%02x".format(color.red)}${"%02x".format(color.green)}${"%02x".format(color.blue)}]$text[/#]"
 }
 fun textSpeed(speed: Int) = "[#ts$speed]"
-fun pause(pause: Duration) = "[#ts${pause.inMilliseconds.toInt()}]"
+fun pause(pause: Duration) = "[#p${pause.inMilliseconds.toInt()}]"
 val flashSmall = "[#fs]"
 val flashMedium = "[#fm]"
 val flashBig = "[#fl]"
@@ -41,11 +41,13 @@ val shakeMedium = "[#sm]"
 val shakeBig = "[#sl]"
 
 class ObjectionMaker(val panels: List<Panel>) {
-    class Builder {
+    class Builder(defaultTextSpeed: Int?) {
 
-        val panels = mutableListOf<Panel>()
+        private val defaultTextSpeedStr = defaultTextSpeed?.let(::textSpeed)
 
-        private fun a(id: Int) = Action(id, panels)
+        private val panels = mutableListOf<Panel>()
+
+        private fun a(id: Int) = Action(id, panels, defaultTextSpeedStr)
 
         inner class Judge {
             val stand = a(30)
@@ -59,6 +61,18 @@ class ObjectionMaker(val panels: List<Panel>) {
             val stand = a(1)
             val deskSlam = a(2)
             val point = a(3)
+            val confident = a(4)
+            val thinking = a(33)
+            val cornered = a(34)
+            val silly = a(35)
+            val read = a(59)
+            val sipMug = a(76)
+            val nod = a(100)
+            val headshake = a(101)
+            val damage = a(129)
+            val breakdown = a(140)
+            val coffeeStained = a(188)
+            val yell = a(271)
         }
 
         inner class Edgeworth {
@@ -98,8 +112,8 @@ class ObjectionMaker(val panels: List<Panel>) {
     }
 }
 
-fun makeTrial(builder: ObjectionMaker.Builder.() -> Unit): ObjectionMaker {
-    return ObjectionMaker.Builder().apply(builder).build()
+fun makeTrial(defaultTextSpeed: Int? = null, builder: ObjectionMaker.Builder.() -> Unit): ObjectionMaker {
+    return ObjectionMaker.Builder(defaultTextSpeed = defaultTextSpeed).apply(builder).build()
 }
 
 data class Panel(
