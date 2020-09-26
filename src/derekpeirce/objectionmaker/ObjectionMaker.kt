@@ -10,17 +10,30 @@ class Person(val panels: MutableList<Panel>) {
 
 }
 
-class Action(val id: Int, private val panels: MutableList<Panel>, private val defaultTextSpeed: String?) {
+class Action(val id: Int, private val builder: ObjectionMaker.Builder, private val defaultTextSpeed: String?) {
     fun say(text: String, bubble: String = "0") = apply {
-        panels.add(
+        val music = when (val state = builder.musicState) {
+            MusicState.None, MusicState.Continue -> null
+            is MusicState.StartPlaying -> {
+                builder.musicState = MusicState.Continue
+                state.music.toString()
+            }
+            MusicState.Stopping -> {
+                builder.musicState = MusicState.None
+                endBackgroundMusic
+            }
+        }
+        builder.panels.add(
             Panel(
-                Id = panels.size + 1,
-                Text = (defaultTextSpeed ?: "") + text,
+                Id = builder.panels.size + 1,
+                Text = music.orEmpty() + defaultTextSpeed.orEmpty() + text,
                 PoseId = id,
                 BubbleType = bubble
             )
         )
     }
+
+    operator fun invoke(text: String, bubble: String = "0") = say(text, bubble)
 
     fun objection(text: String) = say(text, "1")
     fun holdIt(text: String) = say(text, "2")
@@ -39,26 +52,82 @@ val flashBig = "[#fl]"
 val shakeSmall = "[#ss]"
 val shakeMedium = "[#sm]"
 val shakeBig = "[#sl]"
+val endBackgroundMusic = "[#bgms]"
+
+sealed class MusicState {
+    object None : MusicState()
+    data class StartPlaying(val music: Music): MusicState()
+    object Continue: MusicState()
+    object Stopping: MusicState()
+}
+
+class Music(val n: Int) {
+
+    companion object {
+        val ALLEGRO_2001 = Music(1)
+        val ALLEGRO_2002 = Music(77)
+        val ALLEGRO_2004 = Music(7)
+        val ALLEGRO_2007 = Music(712)
+        val ALLEGRO_2009 = Music(72)
+        val ALLEGRO_2011 = Music(71)
+        val BLUE_BADGER = Music(695)
+        val CIRCUS = Music(470)
+        val CONGRATULATIONS = Music(16)
+        val CORNERED = Music(4)
+        val CROSS_EXAMINING = Music(13)
+        val MODERATO_2001 = Music(18)
+        val OBJECTION = Music(14)
+        val SUSPENSE = Music(65)
+        val TRIAL = Music(2)
+        val TRUTH = Music(17)
+        val VON_KARMA = Music(287)
+    }
+
+    override fun toString() = "[#bgm$n]"
+}
+
+class Sound(val n: Int) {
+    companion object {
+        val APPLAUSE = Sound(5)
+    }
+
+    override fun toString() = "[#bgs$n]"
+}
+
 
 class ObjectionMaker(val panels: List<Panel>) {
     class Builder(defaultTextSpeed: Int?) {
 
         private val defaultTextSpeedStr = defaultTextSpeed?.let(::textSpeed)
 
-        private val panels = mutableListOf<Panel>()
+        var musicState: MusicState = MusicState.None
 
-        private fun a(id: Int) = Action(id, panels, defaultTextSpeedStr)
+        val panels = mutableListOf<Panel>()
 
-        inner class Judge {
-            val stand = a(30)
+        private fun a(id: Int) = Action(id, this, defaultTextSpeedStr)
+
+        fun playMusic(music: Music, withMusic: () -> Unit) {
+            musicState = MusicState.StartPlaying(music)
+            withMusic()
+            musicState = MusicState.Stopping
+        }
+
+        inner open class Actor(standId: Int) {
+            val stand = a(standId)
+
+            operator fun invoke(text: String) = stand(text)
+        }
+
+        inner class Polly : Actor(302)
+
+        inner class Judge : Actor(30) {
             val negative = a(31)
             val surprised = a(32)
             val positive = a(44)
             val eyesClosed = a(186)
         }
 
-        inner class Phoenix {
-            val stand = a(1)
+        inner class Phoenix : Actor(1) {
             val deskSlam = a(2)
             val point = a(3)
             val confident = a(4)
@@ -75,14 +144,12 @@ class ObjectionMaker(val panels: List<Panel>) {
             val yell = a(271)
         }
 
-        inner class Edgeworth {
-            val stand = a(5)
+        inner class Edgeworth : Actor(5) {
             val deskSlam = a(6)
             val point = a(7)
         }
 
-        inner class VonKarma {
-            val stand = a(27)
+        inner class VonKarma : Actor(27) {
             val confident = a(28)
             val armsCrossed = a(29)
             val cornered = a(42)
@@ -92,8 +159,7 @@ class ObjectionMaker(val panels: List<Panel>) {
             val breakdown2 = a(310)
         }
 
-        inner class Maya {
-            val stand = a(102)
+        inner class Maya : Actor(102) {
             val angry = a(103)
             val dull = a(104)
             val thinking = a(105)
