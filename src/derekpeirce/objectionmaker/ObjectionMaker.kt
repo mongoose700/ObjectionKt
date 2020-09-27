@@ -1,17 +1,19 @@
 package derekpeirce.objectionmaker
 
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import java.awt.Color
 import java.io.File
 import java.util.*
 import kotlin.time.Duration
+import kotlin.time.milliseconds
 
 class Person(val panels: MutableList<Panel>) {
 
 }
 
 class Action(val id: Int, private val builder: ObjectionMaker.Builder, private val defaultTextSpeed: String?) {
-    fun say(text: String, bubble: String = "0") = apply {
+    operator fun invoke(text: String, bubble: String = "0", animated: Boolean = true, interrupted: Boolean = false) = apply {
         val music = when (val state = builder.musicState) {
             MusicState.None, MusicState.Continue -> null
             is MusicState.StartPlaying -> {
@@ -26,23 +28,29 @@ class Action(val id: Int, private val builder: ObjectionMaker.Builder, private v
         builder.panels.add(
             Panel(
                 Id = builder.panels.size + 1,
-                Text = music.orEmpty() + defaultTextSpeed.orEmpty() + text,
+                Text = music.orEmpty() + defaultTextSpeed.orEmpty() + text.replace("\t", pause(150.milliseconds)),
                 PoseId = id,
-                BubbleType = bubble
+                BubbleType = bubble,
+                PoseAnimation = animated,
+                GoNext = interrupted
             )
         )
     }
 
-    operator fun invoke(text: String, bubble: String = "0") = say(text, bubble)
-
-    fun objection(text: String) = say(text, "1")
-    fun holdIt(text: String) = say(text, "2")
-    fun takeThat(text: String) = say(text, "3")
+    fun objection(text: String) = invoke(text, "1")
+    fun holdIt(text: String) = invoke(text, "2")
+    fun takeThat(text: String) = invoke(text, "3")
 
 }
 
 fun color(text: String, color: Color): String {
-    return "[#/c${"%02x".format(color.red)}${"%02x".format(color.green)}${"%02x".format(color.blue)}]$text[/#]"
+    val colorString = when (color) {
+        Color.RED -> "r"
+        Color.GREEN -> "g"
+        Color.BLUE -> "b"
+        else -> "c${"%02x".format(color.red)}${"%02x".format(color.green)}${"%02x".format(color.blue)}"
+    }
+    return "[#/$colorString]$text[/#]"
 }
 fun textSpeed(speed: Int) = "[#ts$speed]"
 fun pause(pause: Duration) = "[#p${pause.inMilliseconds.toInt()}]"
@@ -175,6 +183,10 @@ class ObjectionMaker(val panels: List<Panel>) {
         val json = Gson().toJson(panels)
         val base64 = Base64.getEncoder().encodeToString(json.toByteArray())
         File(filename).writeText(base64)
+    }
+
+    fun print() {
+        println(GsonBuilder().setPrettyPrinting().create().toJson(panels))
     }
 }
 
