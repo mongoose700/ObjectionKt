@@ -13,7 +13,7 @@ class Person(val panels: MutableList<Panel>) {
 }
 
 class Action(val id: Int, private val builder: ObjectionMaker.Builder, private val defaultTextSpeed: String?) {
-    operator fun invoke(text: String, bubble: String = "0", animated: Boolean = true, interrupted: Boolean = false) = apply {
+    operator fun invoke(text: String, bubble: String = "0", animated: Boolean = true, interrupted: Boolean = false, doNotTalk: Boolean = false) = apply {
         val music = when (val state = builder.musicState) {
             MusicState.None, MusicState.Continue -> null
             is MusicState.StartPlaying -> {
@@ -32,7 +32,8 @@ class Action(val id: Int, private val builder: ObjectionMaker.Builder, private v
                 PoseId = id,
                 BubbleType = bubble,
                 PoseAnimation = animated,
-                GoNext = interrupted
+                GoNext = interrupted,
+                DoNotTalk = doNotTalk
             )
         )
     }
@@ -97,6 +98,8 @@ class Music(val n: Int) {
 class Sound(val n: Int) {
     companion object {
         val APPLAUSE = Sound(5)
+        val THWAP = Sound(27)
+        val REALIZATION = Sound(3)
     }
 
     override fun toString() = "[#bgs$n]"
