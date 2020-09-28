@@ -1,6 +1,7 @@
 package derekpeirce.objectionmaker
 
 import java.awt.Color
+import kotlin.random.Random
 import kotlin.time.milliseconds
 import kotlin.time.seconds
 
@@ -56,20 +57,23 @@ val armorClass = keyword("Armor Class")
 val d100 = keyword("d100")
 val tenD10 = keyword("10d10")
 val dc = keyword("DC")
-
+val shortRest = keyword("short rest")
 
 
 val alarm = spell("alarm")
 val holdPerson = spell("hold person")
 val freedomOfMovement = spell("freedom of movement")
 val planeShift = spell("plane shift")
+val leomundsTinyHut = spell("Leomund's tiny hut")
 
 val smallPause = pause(100.milliseconds)
 val pause = pause(500.milliseconds)
 val bigPause = pause(1.seconds)
 
+val random = Random(123456)
 
 val dieRoll = Sound.THWAP.toString() + pause
+fun diceRolls(n: Int) = (1..n).map { Sound.THWAP.toString() +  pause((40..70).random(random).milliseconds)}.joinToString(separator = "") + pause(450.milliseconds)
 
 fun main() {
 
@@ -86,18 +90,18 @@ fun main() {
             phoenix("I'm going to search the archmage's body for any hints to who his allies are.")
             vonKarma("I'll follow and keep an eye out for any remaining threats.\t$dieRoll That's a ${value(16)} on my $perception check.")
             phoenix.silly("(Isn't he supposed to wait for the DM to ask for the roll?)", doNotTalk = true)
-            maya("I'll stay back to cast $alarm on the door,\t but you can take Polly with you!\t\t Polly,\t $help!")
+            maya("I'll stay back and start casting $leomundsTinyHut for our $shortRest,\t but you can take Polly with you!\t\t Polly,\t $help!")
             polly("I'm helping!\t I'm helping!")
             judge.positive("Very well.\t\t Phoenix, you may make an $investigation check,\t with advantage from the familiar's $help.")
             judge("Von Karma,\t with your $perception check,\t you don't notice any further threats about you.")
-            phoenix.stand("${dieRoll}Great!$pause I rolled a ${value(13)},\t which comes out to a ${value(25)} with modifiers,\t but my passive", interrupted = true)
+            phoenix.stand("Great!$dieRoll I rolled a ${value(13)},\t which comes out to a ${value(25)} with modifiers,\t but my passive", interrupted = true)
         }
         playMusic(Music.SUSPENSE) {
             vonKarma.snapFinger.holdIt("While Phoenix is busy investigating,\t\t\t I'll take out my $daggerOfVenom and stab him in the back!")
             phoenix.damage("Wait,\t what?\t\t Why would you attack me?\t\t And why now?")
             vonKarma.confident(
                 "Simple.\t\t You and Maya took significant damage in the last fight,\t" +
-                        " and this is my perfect chance for me to finally get rid of both of you and claim the glory for myself.",
+                        " and this is my perfect chance to finally get rid of both of you and claim the glory for myself.",
                 animated = false
             )
             maya.angry("No way!\t That's not fair!\t DM,\t you can't let him do this!")
@@ -115,18 +119,18 @@ fun main() {
             vonKarma.confident.objection("You forgot about my $reliableTalent feature!\t\t I treat this roll as a ${value(10)},\t and my total comes out to $shakeMedium ${value(25)}!")
             phoenix.damage(flashMedium)
             judge.surprised("A minimum roll of ${value(25)}?\t\t Why did I even ask?\t\t\t\t Very well,\t you may take your $surpriseRound.")
-            vonKarma.snapFinger("Perfect!\t\t With my $assassinate feature,\t I get $advantage,\t so that's $dieRoll $pause a $shakeBig ${value(24)} to hit!\t\t And because you're $surprised,\t it's an automatic $criticalHit!")
+            vonKarma.snapFinger("Perfect!\t\t With my $assassinate feature,\t I get $advantage,\t so that's ${diceRolls(2)} $pause a $shakeBig ${value(24)} to hit!\t\t And because you're $surprised,\t it's an automatic $criticalHit!")
             phoenix.breakdown("Gah!\t\t I don't have enough $hitPoints to survive this!\t\t I'm toast!")
             maya.determined("No,\t Phoenix,\t don't give up!\t\t There's no way he can defeat you in a single $surpriseRound!")
         }
         phoenix.thinking("(Wait,\t\t $surpriseRound...$bigPause${Sound.REALIZATION} Of course!)")
-        vonKarma.confident("Let's see,\t that's ${value(5)} plus the weapon bonus of ${value(1)},\t plus the weapon die of $d4,\t rolled twice", interrupted = true, animated = false)
+        vonKarma.confident("Let's see,\t that's ${value(5)} plus the weapon bonus of ${value(1)},\t plus the weapon die of ${keyword("2d4")}, and the $sneakAttack damage of ${keyword("16d")}, ", interrupted = true, animated = false)
         playMusic(Music.OBJECTION) {
             phoenix.deskSlam.objection("There's no such thing as a $surpriseRound!")
             judge.surprised("What?\t\t Of course there's a $surpriseRound,\t you were $surprised!")
             phoenix.read("No,\t not if we check the $combatStepByStep section on the first page of $chapterNineCombat!\t\t ")
                 .invoke("Step 1 is to determine $surprise,\t which we have already done,\t and Step 2 is to establish our positions.")
-            phoenix.deskSlam("Before we reach Step 4 of taking the first turn,\t Step 3,\t ${pause(100.milliseconds)} $shakeBig we all roll $initiative!" +
+            phoenix.deskSlam("Before we reach Step 4 of taking the first turn,\t Step 3,\t\t we all$shakeBig roll $initiative!" +
                     "\t\t\t And if my roll is higher,\t I'm no longer $surprised during the attack!")
             vonKarma.damage(flashMedium)
             vonKarma.armsCrossed("Fine,\t but you're wasting our time if you think you can beat my $initiative roll!")
@@ -171,7 +175,7 @@ fun main() {
 //            phoenix.thinking("(Great, now I can just hit him with hold person, and Maya and I will have enough time to take him out!)")
 //            phoenix.cornered("(Or, I would, if Maya hadn't cast freedom of movement on him in the last fight!)")
         playMusic(Music.SUSPENSE) {
-            vonKarma.confident("You just used your two remaining $bardicInspiration,\t you no longer have a chance! $pause You're just delaying the inevitable!", animated = false)
+            vonKarma.confident("You just used your two remaining $bardicInspirations,\t you no longer have a chance! $pause You're just delaying the inevitable!", animated = false)
             judge("Von Karma stabs with his dagger,\t but Phoenix avoids it with a distracting objection.\t\t Maya is also surprised,\t so after her we go to Phoenix at the top of the round!")
             maya.stand.holdIt("Wait,\t don't forget Polly!\t\t She got a ${value(21)}!")
             vonKarma("And what is a parrot supposed to do in this fight?")
@@ -187,12 +191,12 @@ fun main() {
             phoenix.yell("I'm using it to target von Karma!")
             vonKarma.damage("What?")
             vonKarma.snapFinger("To do that,\t you'll need to hit me with an $attackRoll!")
-            phoenix.nod("Yes,\t with $advantage thanks to Polly! $dieRoll And that's a $shakeMedium ${value(27)} to hit!")
+            phoenix.nod("Yes,\t with $advantage thanks to Polly! ${diceRolls(2)} And that's a $shakeMedium ${value(27)} to hit!")
             vonKarma.damage("Urgh!\t\t But I still get to make a $charisma saving throw!")
             vonKarma.confident("And I have $advantage thanks to my $mageSlayer feat because you're next to", animated = false, interrupted = true)
             maya.determined.objection("You rolled an ${value(11)}.")
             vonKarma.cornered("Wh-what?\t\t I haven't rolled my $d20 yet!")
-            maya.determined("Right,\t but I still had one more $portent left,\t and I can see you!\t\t I replace your die roll with an ${value(11)}.")
+            maya.determined("Right,\t but I still had one more $portent left,\t and I can see you!\t\t I foresaw your die roll as an ${value(11)}.")
             vonKarma.cornered("That's... $pause only a ${value(15)} total!")
             phoenix.point("And the $dc is $shakeBig${value(18)}!")
         }
@@ -203,8 +207,8 @@ fun main() {
             phoenix("The Elemental Plane of Fire.")
             vonKarma.armsCrossed("I can work with that.\t\t DM,\t I shall appear in the City of Brass!\t\t I'll use my efreeti contact there to", interrupted = true)
             phoenix.read.objection("According to the Player's Handbook,\t the location in the new plane is determined randomly.")
-            judge.surprised("I see.\t\t I'll take a map of the Plane of Fire and roll a $d100...$dieRoll")
-            judge.negative("That's a ${value(17)}. $bigPause You appear in ${shakeBig}the Sea of Fire!$dieRoll You take ${value(42)} fire damage from the lava,\t and will continue to take $tenD10 fire damage per round.")
+            judge.surprised("I see.\t\t I'll take a map of the Plane of Fire and roll a $d100...${diceRolls(2)}")
+            judge.negative("That's a ${value(17)}. $bigPause You appear in ${shakeBig}the Sea of Fire!${diceRolls(10)} You take ${value(42)} fire damage from the lava,\t and will continue to take $tenD10 fire damage per round.")
             vonKarma.damage(flashBig)
             vonKarma.breakdown2("Gah!\t\t\t That's it,\t you're clearly all ganging up on me!\t\t I'm leaving,\t and not coming back!")
             judge.negative("And good riddance!")
