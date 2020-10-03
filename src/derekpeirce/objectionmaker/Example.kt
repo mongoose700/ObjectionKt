@@ -66,6 +66,8 @@ val freedomOfMovement = spell("freedom of movement")
 val planeShift = spell("plane shift")
 val leomundsTinyHut = spell("Leomund's tiny hut")
 
+val savingThrow = keyword("saving throw")
+
 val smallPause = pause(100.milliseconds)
 val pause = pause(500.milliseconds)
 val bigPause = pause(1.seconds)
@@ -92,7 +94,7 @@ fun main() {
             phoenix.silly("(Isn't he supposed to wait for the DM to ask for the roll?)", doNotTalk = true)
             maya("I'll stay back and start casting $leomundsTinyHut for our $shortRest,\t but you can take Polly with you!\t\t Polly,\t $help!")
             polly("I'm helping!\t I'm helping!")
-            judge.positive("Very well.\t\t Phoenix, you may make an $investigation check,\t with advantage from the familiar's $help.")
+            judge.positive("Very well.\t\t Phoenix, you may make an $investigation check,\t with $advantage from the familiar's $help.")
             judge("Von Karma,\t with your $perception check,\t you don't notice any further threats about you.")
             phoenix.stand("Great!$dieRoll I rolled a ${value(13)},\t which comes out to a ${value(25)} with modifiers,\t but my passive", interrupted = true)
         }
@@ -152,11 +154,11 @@ fun main() {
             phoenix.confident("And that's an additional $shakeMedium ${value(5)},\t for a total of$shakeMedium ${value(20)}!\t\t\t I beat your $initiative,\t and I'm no longer $surprised!")
             vonKarma.damage(flashMedium)
             vonKarma.cornered("Fine,\t so I lose the $criticalHit,\t but I can still use $cunningActionAim!")
-            vonKarma.armsCrossed("As long as I don't move,\t I get $advantage on one attack roll,\t which ensures my $sneakAttack damage! That should still be enough.")
+            vonKarma.armsCrossed("As long as I don't move,\t I get $advantage on one $attackRoll,\t which ensures my $sneakAttack damage! That should still be enough.")
         }
         playMusic(Music.OBJECTION) {
             phoenix.point.holdIt(
-                "Now that I'm not $surprised,\t I can use $cuttingWords as my $reaction,\t subtracting a $d12 roll from your attack roll! $shakeMedium ${pause(
+                "Now that I'm not $surprised,\t I can use $cuttingWords as my $reaction,\t subtracting a $d12 roll from your $attackRoll! $shakeMedium ${pause(
                     500.milliseconds
                 )}"
             )
@@ -169,36 +171,33 @@ fun main() {
         judge.surprised("Wait,\t\t why are you objecting?")
         phoenix.silly("Oh,\t\t sorry,\t\t that's my $cuttingWord. \"Objection.\"")
         playMusic(Music.OBJECTION) {
-            phoenix.yell.objection("That's a $shakeBig ${value(9)}!\t\t\t Your attack roll is now ${value(15)},\t which is less than my $armorClass!")
+            phoenix.yell.objection("That's a $shakeBig ${value(9)}!\t\t\t Your $attackRoll is now ${value(15)},\t which is less than my $armorClass!")
             vonKarma.breakdown1("Fine,\t but you're still low on $spells and $hitPoints!\t\t You won't win this!")
         }
-//            phoenix.thinking("(Great, now I can just hit him with hold person, and Maya and I will have enough time to take him out!)")
-//            phoenix.cornered("(Or, I would, if Maya hadn't cast freedom of movement on him in the last fight!)")
         playMusic(Music.SUSPENSE) {
             vonKarma.confident("You just used your two remaining $bardicInspirations,\t you no longer have a chance! $pause You're just delaying the inevitable!", animated = false)
-            judge("Von Karma stabs with his dagger,\t but Phoenix avoids it with a distracting objection.\t\t Maya is also surprised,\t so after her we go to Phoenix at the top of the round!")
+            judge("Von Karma stabs with his dagger,\t but Phoenix avoids it with a distracting objection.\t\t Maya is also $surprised,\t so after her we go to Phoenix at the top of the round!")
             maya.stand.holdIt("Wait,\t don't forget Polly!\t\t She got a ${value(21)}!")
             vonKarma("And what is a parrot supposed to do in this fight?")
-            phoenix.confident("She can use the $help action!")
-            maya.determined("Yeah,\t she'll do that!\t\t Polly, $help!")
+            maya.determined("She can use $help, which will grant Phoenix $advantage on his next $attackRoll!\t\t Polly, $help!")
             polly("I'm helping!\t I'm helping!")
-            vonKarma("Fine,\t as if that'll accomplish anything.\t\t You've wasted enough time as it is.")
-            phoenix.confident("Oh,\t it will.\t\t On my turn,\t I cast $planeShift!")
+            vonKarma("Fine,\t as if that'll accomplish anything.\t\t I don't think I've seen him make an $attackRoll this entire campaign.\t\t You've wasted enough time as it is.")
+            phoenix.confident("Thanks, Maya.\t\t On my turn,\t I cast $planeShift!")
             vonKarma.confident("Ha!\t\t\t You're fleeing!\t\t Fine by me,\t I can eliminate Maya in peace,\t and then I'll come after you!")
         }
         playMusic(Music.OBJECTION) {
             phoenix.point.takeThat("I never said I was casting it on myself.")
-            phoenix.yell("I'm using it to target von Karma!")
+            phoenix.yell("I'm using it to target$shakeBig von Karma!")
             vonKarma.damage("What?")
             vonKarma.snapFinger("To do that,\t you'll need to hit me with an $attackRoll!")
             phoenix.nod("Yes,\t with $advantage thanks to Polly! ${diceRolls(2)} And that's a $shakeMedium ${value(27)} to hit!")
-            vonKarma.damage("Urgh!\t\t But I still get to make a $charisma saving throw!")
+            vonKarma.damage("Urgh!\t\t But I still get to make a $charisma $savingThrow!")
             vonKarma.confident("And I have $advantage thanks to my $mageSlayer feat because you're next to", animated = false, interrupted = true)
             maya.determined.objection("You rolled an ${value(11)}.")
             vonKarma.cornered("Wh-what?\t\t I haven't rolled my $d20 yet!")
             maya.determined("Right,\t but I still had one more $portent left,\t and I can see you!\t\t I foresaw your die roll as an ${value(11)}.")
             vonKarma.cornered("That's... $pause only a ${value(15)} total!")
-            phoenix.point("And the $dc is $shakeBig${value(18)}!")
+            phoenix.point("And the $dc is $shakeBig${value(18)}! $pause")
         }
         vonKarma.damage("$flashBig ${pause(1.seconds)}")
         playMusic(Music.TRUTH) {
