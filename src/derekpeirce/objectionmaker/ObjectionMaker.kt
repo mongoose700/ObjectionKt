@@ -12,8 +12,19 @@ class Person(val panels: MutableList<Panel>) {
 
 }
 
-class Action(val id: Int, private val builder: ObjectionMaker.Builder, private val defaultTextSpeed: String?) {
-    operator fun invoke(text: String, bubble: String = "0", animated: Boolean = true, interrupted: Boolean = false, doNotTalk: Boolean = false) = apply {
+class Action(
+    val id: Int,
+    private val builder: ObjectionMaker.Builder,
+    private val defaultTextSpeed: String? = null,
+    private val name: String? = null
+) {
+    operator fun invoke(
+        text: String,
+        bubble: String = "0",
+        animated: Boolean = true,
+        interrupted: Boolean = false,
+        doNotTalk: Boolean = false
+    ) = apply {
         val music = when (val state = builder.musicState) {
             MusicState.None, MusicState.Continue -> null
             is MusicState.StartPlaying -> {
@@ -27,13 +38,14 @@ class Action(val id: Int, private val builder: ObjectionMaker.Builder, private v
         }
         builder.panels.add(
             Panel(
-                Id = builder.panels.size + 1,
-                Text = music.orEmpty() + defaultTextSpeed.orEmpty() + text.replace("\t", pause(150.milliseconds)),
-                PoseId = id,
-                BubbleType = bubble,
-                PoseAnimation = animated,
-                GoNext = interrupted,
-                DoNotTalk = doNotTalk
+                id = builder.panels.size + 1,
+                text = music.orEmpty() + defaultTextSpeed.orEmpty() + text.replace("\t", pause(150.milliseconds)),
+                poseId = id,
+                bubbleType = bubble,
+                poseAnimation = animated,
+                goNext = interrupted,
+                doNotTalk = doNotTalk,
+                username = name.orEmpty()
             )
         )
     }
@@ -115,7 +127,7 @@ class ObjectionMaker(val panels: List<Panel>) {
 
         val panels = mutableListOf<Panel>()
 
-        private fun a(id: Int) = Action(id, this, defaultTextSpeedStr)
+        private fun action(id: Int, name: String? = null) = Action(id,this, defaultTextSpeedStr, name)
 
         fun playMusic(music: Music, withMusic: () -> Unit) {
             musicState = MusicState.StartPlaying(music)
@@ -123,8 +135,10 @@ class ObjectionMaker(val panels: List<Panel>) {
             musicState = MusicState.Stopping
         }
 
-        inner open class Actor(standId: Int) {
+        inner open class Actor(standId: Int, val name: String? = null) {
             val stand = a(standId)
+
+            internal fun a(id: Int) = action(id, name)
 
             operator fun invoke(text: String) = stand(text)
         }
@@ -170,13 +184,60 @@ class ObjectionMaker(val panels: List<Panel>) {
             val breakdown2 = a(310)
         }
 
-        inner class Maya : Actor(102) {
+        inner class Maya(name: String? = null) : Actor(102, name = name) {
             val angry = a(103)
             val dull = a(104)
             val thinking = a(105)
             val determined = a(106)
         }
 
+        inner class Apollo(name: String? = null) : Actor(60, name = name) {
+            val confident = a(55)
+            val silly = a(56)
+            val deskSlam = a(57)
+            val read = a(58)
+            val point = a(61)
+            val cornered = a(62)
+            val thinking = a(63)
+        }
+
+        inner class FranziskaVonKarma(name: String? = null) : Actor(21, name = name) {
+            val confident = a(22)
+            val deskSlam = a(23)
+            val armsCrossed = a(24)
+            val point = a(25)
+            val whipDesk = a(26)
+            val cornered = a(41)
+            val damage = a(192)
+            val bow = a(193)
+            val yell = a(274)
+        }
+
+        inner class Lotta(name: String? = null) : Actor(113, name = name) {
+            val stand2 = a(114)
+            val silly = a(115)
+            val relieved = a(116)
+            val smile = a(117)
+            val angry = a(118)
+            val stare = a(119)
+            val uncertain = a(120)
+        }
+
+        inner class MattEngarde(name: String? = null) : Actor(253, name = name) {
+            val uncertain = a(254)
+            val call = a(255)
+            val onCall = a(256)
+            val evil = a(257)
+            val laugh = a(258)
+            val cornered = a(259)
+            val breakdown = a(260)
+        }
+
+        inner class Gumshoe(name: String? = null) : Actor(130, name = name) {
+            val sad = a(134)
+            val headscratch = a(137)
+            val stare = a(135)
+        }
 
         fun build(): ObjectionMaker =
             ObjectionMaker(panels.toList())
@@ -184,6 +245,7 @@ class ObjectionMaker(val panels: List<Panel>) {
 
     fun writeTo(filename: String) {
         val json = Gson().toJson(panels)
+        println(json)
         val base64 = Base64.getEncoder().encodeToString(json.toByteArray())
         File(filename).writeText(base64)
     }
@@ -198,14 +260,14 @@ fun makeTrial(defaultTextSpeed: Int? = null, builder: ObjectionMaker.Builder.() 
 }
 
 data class Panel(
-    val Id: Int,
-    val Text: String,
-    val PoseId: Int = 1,
-    val PoseAnimation: Boolean = true,
-    val Flipped: Boolean = false,
-    val BubbleType: String = "0",
-    val GoNext: Boolean = false,
-    val MergeNext: Boolean = false,
-    val DoNotTalk: Boolean = false,
-    val Username: String = ""
+    val id: Int,
+    val text: String,
+    val poseId: Int = 1,
+    val poseAnimation: Boolean = true,
+    val flipped: Boolean = false,
+    val bubbleType: String = "0",
+    val goNext: Boolean = false,
+    val mergeNext: Boolean = false,
+    val doNotTalk: Boolean = false,
+    val username: String = ""
 )
