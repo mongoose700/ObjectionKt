@@ -215,6 +215,6 @@ fun main() {
         judge.surprised("Um,$pause do either of you know anyone else who can join?")
     }.run {
         print()
-        writeTo("example.json")
+        writeTo("example.objection")
     }
 }
