@@ -3,6 +3,7 @@ package derekpeirce.objectionmaker
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import java.awt.Color
+import java.awt.Frame
 import java.io.File
 import java.util.*
 import kotlin.time.Duration
@@ -23,7 +24,8 @@ class Action(
         bubble: String = "0",
         animated: Boolean = true,
         interrupted: Boolean = false,
-        doNotTalk: Boolean = false
+        doNotTalk: Boolean = false,
+        centerText: Boolean = false
     ) = apply {
         val music = when (val state = builder.musicState) {
             MusicState.None, MusicState.Continue -> null
@@ -36,6 +38,13 @@ class Action(
                 endBackgroundMusic
             }
         }
+        val frameActions = mutableListOf<FrameAction>()
+        if (centerText) {
+            frameActions.add(FrameAction.CENTER_TEXT)
+        }
+        if (doNotTalk) {
+            frameActions.add(FrameAction.MUTE_SPEECH)
+        }
         builder.panels.add(
             Panel(
                 id = builder.panels.size + 1,
@@ -45,6 +54,7 @@ class Action(
                 poseAnimation = animated,
                 goNext = interrupted,
                 doNotTalk = doNotTalk,
+                frameActions = frameActions,
                 username = name.orEmpty()
             )
         )
@@ -312,6 +322,17 @@ fun makeTrial(defaultTextSpeed: Int? = null, builder: ObjectionMaker.Builder.() 
     return ObjectionMaker.Builder(defaultTextSpeed = defaultTextSpeed).apply(builder).build()
 }
 
+data class FrameAction(
+    val actionId: Int,
+    val actionParam: String = "0"
+) {
+    companion object {
+        val MUTE_SPEECH = FrameAction(actionId = 5)
+        val CENTER_TEXT = FrameAction(actionId = 9)
+    }
+}
+
+
 data class Panel(
     val id: Int,
     val text: String,
@@ -322,5 +343,6 @@ data class Panel(
     val goNext: Boolean = false,
     val mergeNext: Boolean = false,
     val doNotTalk: Boolean = false,
-    val username: String = ""
+    val username: String = "",
+    val frameActions: List<FrameAction> = emptyList()
 )

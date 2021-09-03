@@ -2,12 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbac6274-c32e-474e-9eee-c7a9a3d9c49c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/derekpeirce/objectionmaker/GiantToad.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/incapacitated.json" beforeDir="false" afterPath="$PROJECT_DIR$/incapacitated.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/META-INF/ObjectionKt.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/META-INF/ObjectionKt.kotlin_module" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/Action.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/Action.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ExampleKt$main$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/IncapacitatedKt$main$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/IncapacitatedKt$main$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/IncapacitatedKt$main$1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/IncapacitatedKt$main$1$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/IncapacitatedKt$main$1$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/IncapacitatedKt$main$1$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/IncapacitatedKt$main$1$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/IncapacitatedKt$main$1$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/IncapacitatedKt$main$1$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/IncapacitatedKt$main$1$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/IncapacitatedKt$main$1$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/IncapacitatedKt$main$1$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/IncapacitatedKt$main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/IncapacitatedKt$main$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/IncapacitatedKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/IncapacitatedKt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/Music$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/Music$Companion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/Music.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/Music.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/MusicState$Continue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/MusicState$Continue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/MusicState$None.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/MusicState$None.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/MusicState$StartPlaying.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/MusicState$StartPlaying.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/MusicState$Stopping.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/MusicState$Stopping.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/MusicState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/MusicState.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ObjectionMaker$Builder$Actor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ObjectionMaker$Builder$Actor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ObjectionMaker$Builder$Apollo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ObjectionMaker$Builder$Apollo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ObjectionMaker$Builder$Edgeworth.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ObjectionMaker$Builder$Edgeworth.class" afterDir="false" />
@@ -24,9 +47,9 @@
       <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ObjectionMaker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ObjectionMaker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ObjectionMakerKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/ObjectionMakerKt.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/Panel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/Panel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/Person.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/Sound$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/Sound$Companion.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/Sound.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ObjectionKt/derekpeirce/objectionmaker/Sound.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/derekpeirce/objectionmaker/Incapacitated.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/derekpeirce/objectionmaker/Incapacitated.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/derekpeirce/objectionmaker/ObjectionMaker.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/derekpeirce/objectionmaker/ObjectionMaker.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +91,7 @@
       <recent name="C:\Users\derek\ObjectionKt\src\derekpeirce\objectionmaker" />
     </key>
   </component>
-  <component name="RunManager" selected="Kotlin.IncapacitatedKt">
+  <component name="RunManager" selected="Kotlin.GiantToadKt">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -84,6 +107,19 @@
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GiantToadKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <module name="ObjectionKt" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" value="derekpeirce.objectionmaker.GiantToadKt" />
+      <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -129,20 +165,6 @@
         <option name="com.soywiz.korge.intellij.UpdateResourceBeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <configuration name="derekpeirce.objectionmaker.DevilContractKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <module name="ObjectionKt" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" value="derekpeirce.objectionmaker.DevilContractKt" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-        <option name="com.soywiz.korge.intellij.UpdateResourceBeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration name="derekpeirce.objectionmaker.ExampleKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <module name="ObjectionKt" />
       <option name="VM_PARAMETERS" />
@@ -177,11 +199,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.GiantToadKt" />
         <item itemvalue="Kotlin.IncapacitatedKt" />
         <item itemvalue="Kotlin.derekpeirce.objectionmaker.ExampleKt" />
         <item itemvalue="Kotlin.derekpeirce.objectionmaker.AttemptKt" />
         <item itemvalue="Kotlin.derekpeirce.objectionmaker.ChristmasKt" />
-        <item itemvalue="Kotlin.derekpeirce.objectionmaker.DevilContractKt" />
       </list>
     </recent_temporary>
   </component>
@@ -199,6 +221,7 @@
       <workItem from="1610851726836" duration="23223000" />
       <workItem from="1615098400547" duration="2942000" />
       <workItem from="1616876488791" duration="290000" />
+      <workItem from="1630642028269" duration="3716000" />
     </task>
     <servers />
   </component>
@@ -206,62 +229,41 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1792" y="-781" key="#Project_Structure" timestamp="1610851802333">
-      <screen x="-2560" y="-1067" width="2560" height="1415" />
-    </state>
-    <state x="-1792" y="-781" key="#Project_Structure/-2560.-1067.2560.1415/0.25.1680.1025@-2560.-1067.2560.1415" timestamp="1610851802333" />
-    <state width="2518" height="498" key="GridCell.Tab.0.bottom" timestamp="1617160429761">
+    <state width="2518" height="498" key="GridCell.Tab.0.bottom" timestamp="1630645499013">
       <screen x="0" y="25" width="2560" height="1415" />
     </state>
-    <state width="1259" height="498" key="GridCell.Tab.0.bottom/-2560.-1067.2560.1415/0.25.1680.1025@-2560.-1067.2560.1415" timestamp="1611081185628" />
-    <state width="2518" height="498" key="GridCell.Tab.0.bottom/0.25.2560.1415/2560.1117.1680.1025@0.25.2560.1415" timestamp="1617160429761" />
-    <state width="2518" height="498" key="GridCell.Tab.0.center" timestamp="1617160429760">
+    <state width="2518" height="498" key="GridCell.Tab.0.bottom/0.25.2560.1415/2560.1033.1680.1025@0.25.2560.1415" timestamp="1630645499013" />
+    <state width="2518" height="498" key="GridCell.Tab.0.center" timestamp="1630645499013">
       <screen x="0" y="25" width="2560" height="1415" />
     </state>
-    <state width="1259" height="498" key="GridCell.Tab.0.center/-2560.-1067.2560.1415/0.25.1680.1025@-2560.-1067.2560.1415" timestamp="1611081185627" />
-    <state width="2518" height="498" key="GridCell.Tab.0.center/0.25.2560.1415/2560.1117.1680.1025@0.25.2560.1415" timestamp="1617160429760" />
-    <state width="2518" height="498" key="GridCell.Tab.0.left" timestamp="1617160429759">
+    <state width="2518" height="498" key="GridCell.Tab.0.center/0.25.2560.1415/2560.1033.1680.1025@0.25.2560.1415" timestamp="1630645499013" />
+    <state width="2518" height="498" key="GridCell.Tab.0.left" timestamp="1630645499012">
       <screen x="0" y="25" width="2560" height="1415" />
     </state>
-    <state width="1259" height="498" key="GridCell.Tab.0.left/-2560.-1067.2560.1415/0.25.1680.1025@-2560.-1067.2560.1415" timestamp="1611081185627" />
-    <state width="2518" height="498" key="GridCell.Tab.0.left/0.25.2560.1415/2560.1117.1680.1025@0.25.2560.1415" timestamp="1617160429759" />
-    <state width="2518" height="498" key="GridCell.Tab.0.right" timestamp="1617160429760">
+    <state width="2518" height="498" key="GridCell.Tab.0.left/0.25.2560.1415/2560.1033.1680.1025@0.25.2560.1415" timestamp="1630645499012" />
+    <state width="2518" height="498" key="GridCell.Tab.0.right" timestamp="1630645499013">
       <screen x="0" y="25" width="2560" height="1415" />
     </state>
-    <state width="1259" height="498" key="GridCell.Tab.0.right/-2560.-1067.2560.1415/0.25.1680.1025@-2560.-1067.2560.1415" timestamp="1611081185628" />
-    <state width="2518" height="498" key="GridCell.Tab.0.right/0.25.2560.1415/2560.1117.1680.1025@0.25.2560.1415" timestamp="1617160429760" />
-    <state width="2518" height="498" key="GridCell.Tab.1.bottom" timestamp="1617160429762">
+    <state width="2518" height="498" key="GridCell.Tab.0.right/0.25.2560.1415/2560.1033.1680.1025@0.25.2560.1415" timestamp="1630645499013" />
+    <state width="2518" height="498" key="GridCell.Tab.1.bottom" timestamp="1630645498943">
       <screen x="0" y="25" width="2560" height="1415" />
     </state>
-    <state width="1259" height="498" key="GridCell.Tab.1.bottom/-2560.-1067.2560.1415/0.25.1680.1025@-2560.-1067.2560.1415" timestamp="1611081185629" />
-    <state width="2518" height="498" key="GridCell.Tab.1.bottom/0.25.2560.1415/2560.1117.1680.1025@0.25.2560.1415" timestamp="1617160429762" />
-    <state width="2518" height="498" key="GridCell.Tab.1.center" timestamp="1617160429761">
+    <state width="2518" height="498" key="GridCell.Tab.1.bottom/0.25.2560.1415/2560.1033.1680.1025@0.25.2560.1415" timestamp="1630645498943" />
+    <state width="2518" height="498" key="GridCell.Tab.1.center" timestamp="1630645498943">
       <screen x="0" y="25" width="2560" height="1415" />
     </state>
-    <state width="1259" height="498" key="GridCell.Tab.1.center/-2560.-1067.2560.1415/0.25.1680.1025@-2560.-1067.2560.1415" timestamp="1611081185628" />
-    <state width="2518" height="498" key="GridCell.Tab.1.center/0.25.2560.1415/2560.1117.1680.1025@0.25.2560.1415" timestamp="1617160429761" />
-    <state width="2518" height="498" key="GridCell.Tab.1.left" timestamp="1617160429761">
+    <state width="2518" height="498" key="GridCell.Tab.1.center/0.25.2560.1415/2560.1033.1680.1025@0.25.2560.1415" timestamp="1630645498943" />
+    <state width="2518" height="498" key="GridCell.Tab.1.left" timestamp="1630645498942">
       <screen x="0" y="25" width="2560" height="1415" />
     </state>
-    <state width="1259" height="498" key="GridCell.Tab.1.left/-2560.-1067.2560.1415/0.25.1680.1025@-2560.-1067.2560.1415" timestamp="1611081185628" />
-    <state width="2518" height="498" key="GridCell.Tab.1.left/0.25.2560.1415/2560.1117.1680.1025@0.25.2560.1415" timestamp="1617160429761" />
-    <state width="2518" height="498" key="GridCell.Tab.1.right" timestamp="1617160429761">
+    <state width="2518" height="498" key="GridCell.Tab.1.left/0.25.2560.1415/2560.1033.1680.1025@0.25.2560.1415" timestamp="1630645498942" />
+    <state width="2518" height="498" key="GridCell.Tab.1.right" timestamp="1630645498943">
       <screen x="0" y="25" width="2560" height="1415" />
     </state>
-    <state width="1259" height="498" key="GridCell.Tab.1.right/-2560.-1067.2560.1415/0.25.1680.1025@-2560.-1067.2560.1415" timestamp="1611081185628" />
-    <state width="2518" height="498" key="GridCell.Tab.1.right/0.25.2560.1415/2560.1117.1680.1025@0.25.2560.1415" timestamp="1617160429761" />
-    <state x="-1692" y="-621" key="IDE.errors.dialog" timestamp="1610851889500">
-      <screen x="-2560" y="-1067" width="2560" height="1415" />
-    </state>
-    <state x="-1692" y="-621" key="IDE.errors.dialog/-2560.-1067.2560.1415/0.25.1680.1025@-2560.-1067.2560.1415" timestamp="1610851889500" />
-    <state x="-1792" y="-781" key="SettingsEditor" timestamp="1610851988206">
-      <screen x="-2560" y="-1067" width="2560" height="1415" />
-    </state>
-    <state x="-1792" y="-781" key="SettingsEditor/-2560.-1067.2560.1415/0.25.1680.1025@-2560.-1067.2560.1415" timestamp="1610851988206" />
-    <state x="945" y="349" width="670" height="676" key="search.everywhere.popup" timestamp="1615099836579">
+    <state width="2518" height="498" key="GridCell.Tab.1.right/0.25.2560.1415/2560.1033.1680.1025@0.25.2560.1415" timestamp="1630645498943" />
+    <state x="979" y="487" width="602" height="490" key="find.popup" timestamp="1630643294445">
       <screen x="0" y="25" width="2560" height="1415" />
     </state>
-    <state x="-1615" y="-743" width="670" height="676" key="search.everywhere.popup/-2560.-1067.2560.1415/0.25.1680.1025@-2560.-1067.2560.1415" timestamp="1610861022400" />
-    <state x="945" y="349" width="670" height="676" key="search.everywhere.popup/0.25.2560.1415/2560.1117.1680.1025@0.25.2560.1415" timestamp="1615099836579" />
+    <state x="979" y="487" width="602" height="490" key="find.popup/0.25.2560.1415/2560.1033.1680.1025@0.25.2560.1415" timestamp="1630643294445" />
   </component>
 </project>
