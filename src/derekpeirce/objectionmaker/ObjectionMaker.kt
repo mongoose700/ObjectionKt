@@ -98,7 +98,7 @@ class Action(
         builder.panels.add(
             panelCreator.createPanel(
                 id = builder.panels.size + 1,
-                text = music.orEmpty() + image.orEmpty() + defaultTextSpeed.orEmpty() + text.replace("\t", pause(tabPauseTime)),
+                text = music.orEmpty() + image.orEmpty() + defaultTextSpeed.orEmpty() + processText(text),
                 poseId = id,
                 args = args,
                 username = name.orEmpty()
@@ -106,10 +106,25 @@ class Action(
         )
     }
 
+    private fun processText(text: String): String {
+        return when (builder.punctuation) {
+            PuncutationMode.MANUAL -> text.replace("\t", pause(tabPauseTime))
+            PuncutationMode.AUTO -> text
+                .replace(Regex("[.!?]+")) { it.groupValues[0] + pause(tabPauseTime*2) }
+                .replace(Regex("[,]+")) { it.groupValues[0] + pause(tabPauseTime) }
+                .replace("\t", pause(tabPauseTime))
+        }
+    }
+
     fun objection(text: String) = invoke(text, args = ActionArgs("1"))
     fun holdIt(text: String) = invoke(text, args = ActionArgs("2"))
     fun takeThat(text: String) = invoke(text, args = ActionArgs("3"))
 
+}
+
+enum class PuncutationMode {
+    MANUAL,
+    AUTO,
 }
 
 fun color(text: String, color: Color): String {
@@ -184,7 +199,7 @@ class Sound(val n: Int) {
 
 
 class ObjectionMaker(val frames: List<Panel>, val pairs: List<ActorPairData>, val aliases: List<Nothing> = emptyList(), val version: Int = 3) {
-    class Builder(defaultTextSpeed: Int?, private val tabPauseTime: Duration) {
+    class Builder(defaultTextSpeed: Int?, private val tabPauseTime: Duration, val punctuation: PuncutationMode) {
 
         private val defaultTextSpeedStr = defaultTextSpeed?.let(::textSpeed)
         private val pairs = mutableListOf<ActorPair<*, *>>()
@@ -345,6 +360,35 @@ class ObjectionMaker(val frames: List<Panel>, val pairs: List<ActorPairData>, va
             val worried = a(471)
         }
 
+        inner class Larry(name: String? = null): Actor(27, 206, name = name) {
+            val cornered = a(211)
+            val cry = a(211)
+            val happy = a(207)
+            val nervous = a(212)
+            val surprised = a(214)
+            val think = a(208)
+            val thinkScratchHead = a(209)
+            val thumbsUp = a(213)
+        }
+
+        inner class Godot(name: String? = null): Actor(25, 175, name = name) {
+            val confident = a(180)
+            val confidentWithMug = a(181)
+            val cornered = a(179)
+            val damage = a(218)
+            val damageCustom = a(413)
+            val deskSlam = a(174)
+            val deskSlanWithMug = a(173)
+            val maskExplosion = a(520)
+            val mugSip = a(184)
+            val newMugSip = a(176)
+            val point = a(178)
+            val pointWihtMug = a(177)
+            val think = a(182)
+            val throwMug = a(219)
+            val yell = a(275)
+        }
+
         inner class ActorPair<A1: Actor, A2: Actor>(
             private val actor1: A1,
             private val actor2: A2,
@@ -475,8 +519,8 @@ class ObjectionMaker(val frames: List<Panel>, val pairs: List<ActorPairData>, va
     }
 }
 
-fun makeTrial(defaultTextSpeed: Int? = null, tabPauseTime: Duration = 150.milliseconds, builder: Builder.() -> Unit): ObjectionMaker {
-    return Builder(defaultTextSpeed = defaultTextSpeed, tabPauseTime = tabPauseTime).apply(builder).build()
+fun makeTrial(defaultTextSpeed: Int? = null, tabPauseTime: Duration = 150.milliseconds, punctuation: PuncutationMode = PuncutationMode.MANUAL, builder: Builder.() -> Unit): ObjectionMaker {
+    return Builder(defaultTextSpeed = defaultTextSpeed, tabPauseTime = tabPauseTime, punctuation = punctuation).apply(builder).build()
 }
 
 data class Panel(
@@ -506,3 +550,5 @@ data class ActorPairData(
     val offsetY2: Int = 0,
     val front: Boolean = true
 )
+
+fun repeatStr(numTimes: Int, separator: String = "", factory: () -> String) = (1..numTimes).map { factory() }.joinToString(separator = separator)
