@@ -17,7 +17,8 @@ class Action(
     val id: Int,
     private val builder: ObjectionMaker.Builder,
     private val defaultTextSpeed: String? = null,
-    private val name: String? = null
+    private val name: String? = null,
+    private val background: Background? = null
 ) {
     operator fun invoke(
         text: String,
@@ -55,6 +56,7 @@ class Action(
                 goNext = interrupted,
                 doNotTalk = doNotTalk,
                 frameActions = frameActions,
+                background = background,
                 username = name.orEmpty()
             )
         )
@@ -171,6 +173,15 @@ class Sound(val n: Int) {
     override fun toString() = "[#bgs$n]"
 }
 
+data class Background(val id: Int, val deskUrl: String, val url: String) {
+    companion object {
+        val PROSECUTION = Background(
+            id = 194,
+            deskUrl = "/Images/Backgrounds/Preset_Desk/[PW] Prosecution.png",
+            url = "/Images/Backgrounds/Preset/[PW] Prosecution.jpg"
+        )
+    }
+}
 
 class ObjectionMaker(val panels: List<Panel>) {
     class Builder(defaultTextSpeed: Int?) {
@@ -181,7 +192,7 @@ class ObjectionMaker(val panels: List<Panel>) {
 
         val panels = mutableListOf<Panel>()
 
-        private fun action(id: Int, name: String? = null) = Action(id,this, defaultTextSpeedStr, name)
+        private fun action(id: Int, name: String? = null, background: Background? = null) = Action(id,this, defaultTextSpeedStr, name, background = background)
 
         fun playMusic(music: Music, withMusic: () -> Unit) {
             musicState = MusicState.StartPlaying(music)
@@ -189,10 +200,10 @@ class ObjectionMaker(val panels: List<Panel>) {
             musicState = MusicState.Stopping
         }
 
-        inner open class Actor(standId: Int, val name: String? = null) {
+        open inner class Actor(standId: Int, val name: String? = null, val background: Background? = null) {
             val stand = a(standId)
 
-            internal fun a(id: Int) = action(id, name)
+            internal fun a(id: Int) = action(id, name, background)
 
             operator fun invoke(text: String) = stand(text)
         }
@@ -223,7 +234,7 @@ class ObjectionMaker(val panels: List<Panel>) {
             val yell = a(271)
         }
 
-        inner class Edgeworth : Actor(5) {
+        inner class Edgeworth(name: String? = null) : Actor(5, name = name) {
             val deskSlam = a(6)
             val point = a(7)
             val armsCrossed = a(8)
@@ -302,6 +313,25 @@ class ObjectionMaker(val panels: List<Panel>) {
             val stare = a(135)
         }
 
+        inner class Regina(name: String? = null): Actor(294, name = name) {
+            val cry = a(301)
+            val happy = a(296)
+            val point = a(295)
+            val sad = a(300)
+            val sparkle = a(297)
+            val sparkle2 = a(298)
+            val think = a(299)
+        }
+
+        inner class Moe(name: String? = null, background: Background? = null): Actor(572, name = name, background = background) {
+            val angry = a(577)
+            val damage = a(576)
+            val dull = a(574)
+            val laugh = a(573)
+            val point = a(575)
+            val sad = a(578)
+        }
+
         fun build(): ObjectionMaker =
             ObjectionMaker(panels.toList())
     }
@@ -332,7 +362,6 @@ data class FrameAction(
     }
 }
 
-
 data class Panel(
     val id: Int,
     val text: String,
@@ -344,5 +373,6 @@ data class Panel(
     val mergeNext: Boolean = false,
     val doNotTalk: Boolean = false,
     val username: String = "",
+    val background: Background? = null,
     val frameActions: List<FrameAction> = emptyList()
 )
