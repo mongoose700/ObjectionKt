@@ -116,9 +116,9 @@ class Action(
         }
     }
 
-    fun objection(text: String) = invoke(text, args = ActionArgs("1"))
-    fun holdIt(text: String) = invoke(text, args = ActionArgs("2"))
-    fun takeThat(text: String) = invoke(text, args = ActionArgs("3"))
+    fun objection(text: String, args: ActionArgs =  ActionArgs.DEFAULT) = invoke(text, args = args.copy(bubble = "1"))
+    fun holdIt(text: String, args: ActionArgs =  ActionArgs.DEFAULT) = invoke(text, args = args.copy(bubble = "2"))
+    fun takeThat(text: String, args: ActionArgs =  ActionArgs.DEFAULT) = invoke(text, args = args.copy(bubble = "2"))
 
 }
 
@@ -272,7 +272,11 @@ class ObjectionMaker(val frames: List<Panel>, val pairs: List<ActorPairData>, va
 
             internal fun a(id: Int) = action(id, name)
 
-            operator fun invoke(text: String) = stand(text)
+            operator fun invoke(
+                text: String,
+                args: ActionArgs = ActionArgs.DEFAULT,
+                panelCreator: PanelCreator = PanelCreator.Default
+            ) = stand(text, args, panelCreator)
         }
 
         inner class Polly : Actor(38, 302)

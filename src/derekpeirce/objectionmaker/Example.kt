@@ -1,7 +1,5 @@
 package derekpeirce.objectionmaker
 
-import java.awt.Color
-import kotlin.random.Random
 import kotlin.time.milliseconds
 import kotlin.time.seconds
 
@@ -20,7 +18,7 @@ fun main() {
             judge("Now that you've defeated the archmage and his cohorts,\t what would you like to do?")
             phoenix("I'm going to search the archmage's body for any hints to who his allies are.")
             vonKarma("I'll follow and keep an eye out for any remaining threats.\t$dieRoll That's a ${value(16)} on my $perception check.")
-            phoenix.silly.think("(Isn't he supposed to wait for the DM to ask for the roll?)")
+            phoenix.silly("(Isn't he supposed to wait for the DM to ask for the roll?)")
             maya("I'll stay back and start casting $leomundsTinyHut for our $shortRest,\t but you can take Polly with you!\t\t Polly,\t $help!")
             polly("I'm helping!\t I'm helping!")
             judge.positive("Very well.\t\t Phoenix, you may make an $investigation check,\t with $advantage from the familiar's $help.")
