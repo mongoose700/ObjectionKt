@@ -28,17 +28,13 @@ fun main() {
             judge("He had $readied an attack against whoever opened the door,\t and", args = ActionArgs(interrupted = true))
             phoenix.point.holdIt("I also took the $ready action for when the door opened,\t so I should be able to run through it!")
             judge("Hm,\t you both took the $ready action for when the door opened.\t I don't know what to do.")
-            franziska.confident.takeThat("According to Xanathar's Guide to Everything,\t the ordering of simultaneous events is decided by whoever's turn it is.")
+            franziska.confident.takeThat("According to Xanathar's Guide to Everything,\t the ordering of simultaneous events is decided by whose turn it is.")
             maya("That's me!\t I'll choose to let Phoenix react first.")
             judge.positive(
                 "Very well.\t Phoenix,\t you can run through the doorway.\t The man at the door now has $disadvantage on his attack,\t getting ${
-                    diceRolls(
-                        2
-                    )
+                    diceRolls(2)
                 } a ${
-                    value(
-                        14
-                    )
+                    value(14)
                 }."
             )
             maya("That misses!\t I'll cast $haste on Franziska and run through the doorway as well.")
@@ -62,7 +58,7 @@ fun main() {
             phoenix.thinking("I guess that makes sense.")
         }
         playMusic(Music.CORNERED) {
-            judge("But after your turn,\t Crimus, the leader of the thieves guild pops out around the corner 50 feet away and fires at Franziska with his crossbow.\t That's an ${value(18)} to hit.")
+            judge("But after your turn,\t Crimus,\t the head of thieves' guild,\t pops out around the corner 50 feet away and fires at Franziska with his crossbow.\t That's an ${value(18)} to hit.")
             franziska("That\t", args = ActionArgs(interrupted = true))
             phoenix.deskSlam.holdIt("I'll use $cuttingWords", args = ActionArgs(interrupted = true))
             franziska.stand.objection("You already used your reaction, ", args = ActionArgs(mergeNext = true))
@@ -79,7 +75,7 @@ fun main() {
             maya("If it works,\t he won't be able to hide from me again.")
             phoenix.stand.holdIt("If you do that,\t you immediately spend the spell slot,\t and it's wasted if he doesn't pop out again.")
             maya.angry("Drat.\t Then I'll ready $fireBolt.")
-            franziska.cornered.objection("If you $ready any spell,\t it consumes your foolish concentration!")
+            franziska.cornered.objection("If you $ready any foolish spell,\t it consumes your foolish concentration!")
             maya.thinking("Was I concentrating on something?")
             franziska.damage("You're concentrating on $haste! If you foolishly drop it,\t I lose my next turn!")
             maya.dull("Oh,\t then I shouldn't do that. ", args = ActionArgs(mergeNext = true))
@@ -90,15 +86,16 @@ fun main() {
             franziska("I'll run around the corner and look for the foolish fool.")
             judge.positive("He's immediately visible when you round the corner.")
             franziska.confident("I'll use $insightfulFighting,\t $dieRoll that's a ${value(25)} on my $insight check.")
-            judge.positive("$dieRoll He gets a good $deception check,\t but not that good.")
+            judge("He can beat that... $dieRoll", args = ActionArgs(mergeNext = true))
+            judge.negative("but he didn't.")
             franziska.whipDesk("I'll hit him with my whip, $dieRoll with a ${value(19)} to hit.")
             judge.positive("It hits.")
             franziska("${diceRolls(4)} ${value(16)} slashing damage.")
             judge("He halves it with $uncannyDodge.")
-            franziska("Then I'll $ready an attack when Polly helps.")
+            franziska("Then I'll $ready an attack for when Polly helps.")
             judge.positive("Polly's up next.")
-            maya.determined("Polly, fly around the corner,\t next to Crimus,\t and take the $help action!")
-            polly("Never fear!\t I am here!")
+            maya.determined("Polly,\t fly around the corner,\t next to Crimus,\t and take the $help action!")
+            polly("Have no fear,\t for I am here!")
             franziska.whipDesk("Now I can attack with $advantage. ${diceRolls(2)}")
             franziska.yell("Natural 20! ${diceRolls(8)}")
             franziska("That's ${value(32)} slashing damage to the fool!")

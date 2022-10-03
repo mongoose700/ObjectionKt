@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbac6274-c32e-474e-9eee-c7a9a3d9c49c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/derekpeirce/objectionmaker/ImprovisedWeapon.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/derekpeirce/objectionmaker/MagicLight.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/derekpeirce/objectionmaker/Ready.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ObjectionKt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ObjectionKt.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/derekpeirce/objectionmaker/DndKeywords.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/derekpeirce/objectionmaker/DndKeywords.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/derekpeirce/objectionmaker/Example.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/derekpeirce/objectionmaker/Example.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/derekpeirce/objectionmaker/ObjectionMaker.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/derekpeirce/objectionmaker/ObjectionMaker.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ready.objection" beforeDir="false" afterPath="$PROJECT_DIR$/ready.objection" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/derekpeirce/objectionmaker/Ready.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/derekpeirce/objectionmaker/Ready.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +23,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/derekpeirce/objectionmaker/ObjectionMaker.kt" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/derekpeirce/objectionmaker/MagicLight.kt" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/derekpeirce/objectionmaker/ObjectionMaker.kt" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
